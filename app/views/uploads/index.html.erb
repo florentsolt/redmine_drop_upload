@@ -1,0 +1,25 @@
+<h2>Latest uploaded files</h2>
+
+<div class="splitcontentleft" id="files">
+  <%= render :partial => "files" %>
+</div>
+
+<div class="splitcontentright">
+  <div class="dropzone"></div>
+</div>
+
+<%= javascript_include_tag("dropzone.min.js", :plugin => "redmine_drop_upload") %>
+<%= stylesheet_link_tag("dropzone.css", :plugin => "redmine_drop_upload", :media => "screen") %>
+
+<script type="text/javascript">
+Dropzone.autoDiscover = false;
+$(function() {
+  var dropzone = new Dropzone(".dropzone", {
+    url: "/uploads/upload"
+  }).on('success', function() {
+    $('#files').load('/uploads');
+  });
+});
+</script>
+
+

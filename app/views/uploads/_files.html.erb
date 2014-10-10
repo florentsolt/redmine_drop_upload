@@ -1,0 +1,16 @@
+<table class="list">
+<thead><tr>
+  <th>Filename</th>
+  <th>Age</th>
+  <th>Size</th>
+  <th></th>
+</tr></thead>
+<% @files.each do |file| %>
+  <tr>
+    <td><a class="name" href="/uploads/file/<%= file[:name] %>"><%= h file[:name] %></a></td>
+    <td><%= distance_of_time_in_words_to_now file[:date] %></td>
+    <td><%= number_to_human_size file[:size] %></td>
+    <td><a class="delete" href="/uploads/delete/<%= file[:name] %>">delete</a></td>
+  </tr>
+<% end %>
+</table>
